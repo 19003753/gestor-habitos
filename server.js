@@ -55,4 +55,4 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("conectado a mongodb atlas"))
 .catch(err => console.error("conexion fallida al servidor", err));
 
-app.listen(5000, () => console.log("Servidor corriendo en http://localhost:5000"));
+app.listen(5001, () => console.log("Servidor corriendo en http://localhost:5001"));
