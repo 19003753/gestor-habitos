@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const habitSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
-    usuario: { type: String, required: true },
-    progreso: { type: Number, default: 0 },
+    descripcion: { type: String, required: true},
     fechaCreacion: { type: Date, default: Date.now }
 });
 
