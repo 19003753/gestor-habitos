@@ -15,7 +15,7 @@
 ## 📌 Captura de pantalla
 A continuación, se muestra una vista previa del frontend:
 
-![Vista previa del frontend](Screenshot%202025-03-19%20at%201.40.58%20PM.png)
+<img width="502" alt="Screenshot 2025-03-19 at 1 40 58 PM" src="https://github.com/user-attachments/assets/353bdda4-76c3-450d-b2f5-292f1ffdf21b" />
 
 ## 📌 Tecnologías utilizadas
 - **Frontend:** React (Next.js), Redux Toolkit, Tailwind CSS
