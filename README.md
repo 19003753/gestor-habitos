@@ -5,7 +5,7 @@
 
 ## 📌 Características principales
 ✅ **Añadir hábitos** con nombre y descripción.  
-✅ **Marcar hábitos como completados** con un botón `Done`.  
+✅ **Marcar hábitos como completados** con un botón `Hecho`.  
 ✅ **Registro de rachas** que se actualiza diariamente.  
 ✅ **Reinicio automático de rachas** si se omite un día sin actualizar.  
 ✅ **Mensajes dinámicos de estado** que indican si el hábito fue actualizado o ya se marcó ese día.  
@@ -15,7 +15,8 @@
 ## 📌 Captura de pantalla
 A continuación, se muestra una vista previa del frontend:
 
-<img width="502" alt="Screenshot 2025-03-19 at 1 40 58 PM" src="https://github.com/user-attachments/assets/353bdda4-76c3-450d-b2f5-292f1ffdf21b" />
+<img width="496" alt="Screenshot 2025-03-19 at 3 32 52 PM" src="https://github.com/user-attachments/assets/33b4de9f-af7c-4120-b6bb-524c5008c778" />
+
 
 ## 📌 Tecnologías utilizadas
 - **Frontend:** React (Next.js), Redux Toolkit, Tailwind CSS
