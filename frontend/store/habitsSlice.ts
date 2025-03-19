@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 type Habit = {
+  _id: string;
   nombre: string;
   descripcion: string;
+  progreso: number;
 };
 
 type HabitsState = {
