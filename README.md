@@ -1,146 +1,95 @@
 # 📌 Gestor de Hábitos
 
-**Gestor de Hábitos** es una aplicación web diseñada para ayudar a los usuarios a gestionar y seguir sus hábitos diarios. El proyecto utiliza **Next.js (React) con TypeScript** en el frontend y **Node.js con Express y MongoDB** en el backend.
+## 📌 Descripción
+**Gestor de Hábitos** es una aplicación web que permite a los usuarios registrar y hacer seguimiento de sus hábitos diarios. Los usuarios pueden **marcar hábitos como completados**, visualizar su progreso mediante **barras de progreso**, y gestionar sus rachas de cumplimiento.
+
+## 📌 Características principales
+✅ **Añadir hábitos** con nombre y descripción.  
+✅ **Marcar hábitos como completados** con un botón `Done`.  
+✅ **Registro de rachas** que se actualiza diariamente.  
+✅ **Reinicio automático de rachas** si se omite un día sin actualizar.  
+✅ **Mensajes dinámicos de estado** que indican si el hábito fue actualizado o ya se marcó ese día.  
+✅ **Barras de progreso dinámicas** que reflejan el porcentaje de avance hacia la meta de 66 días.  
+✅ **API con MongoDB** para almacenar la información de los hábitos.  
+
+## 📌 Captura de pantalla
+A continuación, se muestra una vista previa del frontend:
+
+![Vista previa del frontend](Screenshot%202025-03-19%20at%201.40.58%20PM.png)
+
+## 📌 Tecnologías utilizadas
+- **Frontend:** React (Next.js), Redux Toolkit, Tailwind CSS
+- **Backend:** Node.js, Express.js, MongoDB
+- **Estado global:** Redux Toolkit con `createSlice` y `createAsyncThunk`
+- **Cliente API:** Fetch API para comunicarse con el backend
+
+## 📌 Instalación y ejecución
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/tu-usuario/gestor-habitos.git
+   cd gestor-habitos
+   ```
+
+2. **Instala las dependencias del backend:**
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Instala las dependencias del frontend:**
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+
+4. **Configura las variables de entorno:**
+   - En el backend, crea un archivo `.env` y define `MONGO_URI` con la conexión a MongoDB.
+
+5. **Ejecuta el backend:**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+
+6. **Ejecuta el frontend:**
+   ```bash
+   cd ../frontend
+   npm run dev
+   ```
+
+7. **Accede a la aplicación en tu navegador:**
+   ```
+   http://localhost:3000
+   ```
+
+## 📌 API Endpoints
+### 📌 **Backend (Express.js)**
+| Método | Endpoint | Descripción |
+|--------|---------|-------------|
+| `POST` | `/habitos` | Crea un nuevo hábito |
+| `GET`  | `/habitos` | Obtiene la lista de hábitos |
+| `PUT`  | `/habitos/marcar/:id` | Marca un hábito como completado (actualiza la racha) |
+| `DELETE` | `/habitos/eliminar/:id` | Elimina un hábito |
+
+## 📌 Cómo actualizar un hábito en Postman
+1. Abre **Postman** y selecciona el método `PUT`.
+2. Introduce la URL:
+   ```
+   http://localhost:5002/habitos/marcar/ID_DEL_HABITO
+   ```
+3. Reemplaza `ID_DEL_HABITO` con el `_id` real del hábito.
+4. Haz clic en **Send**.
+
+## 📌 Estado de racha
+- Si el usuario **marca el hábito en el mismo día**, verá un mensaje **amarillo** (`⚠️ No se puede actualizar el hábito el mismo día.`).
+- Si el hábito **se marca correctamente**, se muestra un mensaje **verde** (`✅ Hábito actualizado. Nos vemos mañana!`).
+- Si el usuario **olvida actualizar por más de un día**, la racha se **reinicia automáticamente a 0**.
+
+## 📌 Contribuciones
+Si quieres contribuir a este proyecto, por favor **haz un fork y abre un pull request** con tus mejoras. 🚀🔥
+
+## 📌 Autor
+Desarrollado por **Juan Vargas 19003753**.
 
 ---
-
-## 🚀 **Tecnologías utilizadas**
-
-### **Frontend:**
-- 🖥 **Next.js** (App Router)
-- 🎨 **Tailwind CSS**
-- 🌐 **Redux Toolkit** (para gestión de estado)
-- ⚡ **TypeScript**
-
-### **Backend:**
-- 🌍 **Node.js + Express.js**
-- 🗄 **MongoDB con Mongoose**
-- 🔐 **CORS & dotenv** (manejo de variables de entorno)
-
----
-
-## 📂 **Estructura del Proyecto**
-```
-gestor-habitos/
-│── backend/        # Servidor con Express y MongoDB
-│── frontend/       # Cliente con Next.js y Redux
-│── README.md       # Documentación del proyecto
-```
-
----
-
-# ⚙️ **Configuración e Instalación**
-
-## ✅ **1️⃣ Clonar el repositorio**
-```bash
-git clone <URL_DEL_REPOSITORIO>
-cd gestor-habitos
-```
-
----
-
-## ✅ **2️⃣ Configurar el Backend**
-
-```bash
-cd backend
-npm install  # Instalar dependencias
-```
-
-📌 **Crear un archivo `.env` en `backend/` con:**
-```env
-MONGO_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/gestor-habitos
-PORT=5002
-```
-
-🔹 **Ejecutar el servidor:**
-```bash
-npm start  # o usar nodemon con npm run dev
-```
-
-🔹 **Probar la API en Postman:**
-- Obtener hábitos: `GET http://localhost:5002/habitos`
-- Crear hábito: `POST http://localhost:5002/habitos`
-```json
-{
-  "nombre": "Leer",
-  "descripcion": "Leer 30 minutos al día",
-  "progreso": 0
-}
-```
-
----
-
-## ✅ **3️⃣ Configurar el Frontend**
-
-```bash
-cd ../frontend
-npm install  # Instalar dependencias
-```
-
-🔹 **Ejecutar Next.js en modo desarrollo:**
-```bash
-npm run dev
-```
-
-🔹 **Abrir en el navegador:**
-```
-http://localhost:3000
-```
-
----
-
-## ✅ **4️⃣ Configurar Redux en el Frontend**
-
-📌 **Redux está configurado en `frontend/store/`**
-- `store.ts`: Configuración del `store`.
-- `habitsSlice.ts`: Lógica de Redux para manejar hábitos.
-
-🔹 **Cargar los hábitos desde el backend:**
-```tsx
-useEffect(() => {
-  dispatch(fetchHabitsThunk());
-}, [dispatch]);
-```
-
----
-
-## ✅ **5️⃣ Estilizar con Tailwind CSS**
-
-📌 **Tailwind CSS ya está instalado y configurado en `frontend/`**
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-🔹 **Estilos importados en `globals.css`:**
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-🔹 **Ejemplo de uso de Tailwind en `page.tsx`:**
-```tsx
-<div className="p-4 bg-gray-100 rounded-lg shadow-md">Texto con Tailwind</div>
-```
-
----
-
-# 🎯 **Funciones Actuales**
-✅ Backend con Express y MongoDB conectado a MongoDB Atlas.  
-✅ API REST para CRUD de hábitos (`GET`, `POST`, `DELETE`).  
-✅ Frontend con Next.js y Redux para gestionar los hábitos.  
-✅ Estilización moderna con Tailwind CSS.  
-✅ Integración con Redux DevTools en Chrome.  
-
----
-
-# 📌 **Pendientes / Mejoras Futuras**
-🔲 Agregar autenticación de usuarios.  
-🔲 Agregar funcionalidad para editar hábitos.  
-🔲 Mejorar diseño con animaciones y transiciones.  
-🔲 Agregar gráficos de progreso.  
-
----
-
-## 🔥 **¡Gracias por usar Gestor de Hábitos!**
-Si tienes alguna sugerencia o encuentras un error, ¡haz un issue o una pull request! 🚀
+¡Gracias por usar *Gestor de Hábitos*! 🎯🔥
