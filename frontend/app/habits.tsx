@@ -70,15 +70,12 @@ export default function Habits() {
                             )}
                         </div>
                         
-                        {/* button deactivation */}
-                        <button 
+                            {/* button deactivation */}
+                            <button 
                             onClick={() => handleMarkAsDone(habit._id)}
                             className={`px-2 py-1 text-sm text-white rounded transition-all 
                             ${updatedHabits[habit._id] ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"}`}
-                            disabled={updatedHabits[habit._id] !== undefined}
-                        >
-                            Done
-                        </button>
+                            disabled={updatedHabits[habit._id] !== undefined}>Done</button>
 
                     </li>
                 ))}

@@ -55,6 +55,14 @@ router.put('/marcar/:id', async (req, res) => {
           return res.json(habit);
       }
 
+      // reset automatically if is not updated in more than 1 day diff to the last update
+      if (diferenciaDias > 1) {
+        habit.racha = 0;
+        habit.lastupdate = hoy;
+        await habit.save();
+        return res.json(habit);
+    }
+
       console.log("El hábito ya fue marcado hoy, no se aumenta la racha.");
       return res.json({ message: "El hábito ya fue marcado hoy, no se aumenta la racha.", habit });
 
