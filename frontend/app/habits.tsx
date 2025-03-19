@@ -21,6 +21,18 @@ export default function Habits() {
     
     const [updatedHabits, setUpdatedHabits] = useState<Record<string, string>>({});
 
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("es-ES", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+    };
+
     
     const handleMarkAsDone = async (habitId: string) => {
         try {
@@ -53,10 +65,11 @@ export default function Habits() {
                     <li className="flex items-center justify-between" key={habit._id}>
                         <div className="text-left">
 
-                            {/* name, descripction and streak */}
+                            {/* name, descripction, streak and lastupdate */}
                             <span className="text-black font-semibold">{habit.nombre} </span>
                             <span className="text-gray-500 text-sm">/ {habit.descripcion}</span> 
                             <p className="text-gray-500 text-sm">Racha: {habit.racha} días</p>
+                            <p className="text-gray-400 text-xs">Última actualización: {formatDate(habit.lastupdate)}</p>
 
                             {/* progress bar */}
                             <ProgressBar progress={(habit.racha / 66) * 100} />
@@ -75,7 +88,7 @@ export default function Habits() {
                             onClick={() => handleMarkAsDone(habit._id)}
                             className={`px-2 py-1 text-sm text-white rounded transition-all 
                             ${updatedHabits[habit._id] ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"}`}
-                            disabled={updatedHabits[habit._id] !== undefined}>Done</button>
+                            disabled={updatedHabits[habit._id] !== undefined}>Hecho</button>
 
                     </li>
                 ))}
