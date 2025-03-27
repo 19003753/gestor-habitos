@@ -85,16 +85,16 @@ Abre en el navegador: [http://localhost:3000](http://localhost:3000)
 
 ## 📌 Captura de pantalla
 
-Inicio de Sesion  
+<p align="center">Inicio de Sesion  </p>
 <img width="485" alt="Screenshot 2025-03-26 at 7 12 32 PM" src="https://github.com/user-attachments/assets/7544107a-1250-4332-a273-4fa28004eeac" />
 
-Registro  
+<p align="center">Registro  </p>
 <img width="484" alt="Screenshot 2025-03-26 at 7 12 53 PM" src="https://github.com/user-attachments/assets/cd3c7da7-c997-4b3a-9f76-66414bd9f75d" />
 
-Crear un Hábito  
+<p align="center">Crear un Hábito  </p>
 <img width="503" alt="Screenshot 2025-03-26 at 7 16 25 PM" src="https://github.com/user-attachments/assets/e91827c6-7dd1-4699-bc11-754ab28b0b46" />
 
-Lista de Habitos con actualización de rachas  
+<p align="center">Lista de Habitos con actualización de rachas  </p>
 <img width="482" alt="Screenshot 2025-03-26 at 7 17 29 PM" src="https://github.com/user-attachments/assets/5a3860e6-7da4-4e9e-8d73-240cdd769485" />
 
 ---
