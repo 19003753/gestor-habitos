@@ -31,7 +31,7 @@ export default function RegisterPage() {
         }
 
     try {
-        const res = await fetch("http://localhost:5002/register", {
+        const res = await fetch("http://localhost:5002/usuarios/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

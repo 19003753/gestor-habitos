@@ -47,7 +47,7 @@ export default function Home() {
         Cerrar sesión
       </button>
       {nombre && (
-        <h1 className="text-xl font-bold text-black">Bienvenido, {nombre}</h1>
+        <h1 className="text-xl font-bold text-black">Hola, {nombre}</h1>
       )}
       <CreateHabitForm onSuccess={() => dispatch(fetchHabitsThunk())} />
       <Habits />
