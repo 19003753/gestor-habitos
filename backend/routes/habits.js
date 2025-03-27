@@ -2,13 +2,36 @@ const express = require("express");
 const Habit = require("../models/Habit");
 const router = express.Router();
 
-// get habits
-router.get("/", async (req, res) => {
+//obtener todos los habitos 
+router.get("/todos", async (req, res) => {
   try {
-    const habits = await Habit.find();
-    res.json(habits);
+    const habitos = await Habit.find();
+    res.json(habitos);
   } catch (err) {
-    res.status(500).json({ message: "Error al obtener hábitos" });
+    res.status(500).json({ message: "Error al obtener todos los hábitos", err });
+  }
+});
+
+// get habits
+router.get("/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const habitos = await Habit.find({ usuario: userId });
+    const hoy = new Date();
+
+    for (let habito of habitos) {
+      const ultima = new Date(habito.lastupdate);
+      const diferenciaDias = Math.floor((hoy.getTime() - ultima.getTime()) / (1000 * 60 * 60 * 24));
+
+      if (diferenciaDias >= 1 && habito.racha > 0) {
+        habito.racha = 0;
+        await habito.save();
+      }
+    }
+
+    res.json(habitos);
+  } catch (err) {
+    res.status(500).json({ message: "Error al obtener hábitos", err });
   }
 });
 
@@ -34,10 +57,14 @@ router.put('/marcar/:id', async (req, res) => {
 
       const diferenciaDias = Math.floor((hoy - ultimaFecha) / (1000 * 60 * 60 * 24));
 
+      /*
+      console.log(" ");
+      console.log("Nombre del Habito: ", habit.nombre);
       console.log("Fecha actual:", hoy);
       console.log("Última actualización:", ultimaFecha);
-      console.log("Días de diferencia:", diferenciaDias);
-      console.log("Racha actual:", habit.racha);
+      console.log("Días de diferencia:", diferenciaDias, " días.");
+      console.log("Racha actual:", habit.racha, " días.");
+      */
 
       //update if streak is 0
       if (habit.racha === 0) {
@@ -55,15 +82,8 @@ router.put('/marcar/:id', async (req, res) => {
           return res.json(habit);
       }
 
-      // reset automatically if is not updated in more than 1 day diff to the last update
-      if (diferenciaDias > 1) {
-        habit.racha = 0;
-        habit.lastupdate = hoy;
-        await habit.save();
-        return res.json(habit);
-    }
-
       console.log("El hábito ya fue marcado hoy, no se aumenta la racha.");
+      console.log(" ");
       return res.json({ message: "El hábito ya fue marcado hoy, no se aumenta la racha.", habit });
 
   } catch (err) {
@@ -72,8 +92,7 @@ router.put('/marcar/:id', async (req, res) => {
   }
 });
 
-
-// create 1
+// create
 router.post("/", async (req, res) => {
   try {
     const nuevoHabito = new Habit(req.body);
@@ -84,7 +103,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// delete 1
+// delete
 router.delete('/eliminar/:id', async (req, res) => {
   try {
       const habit = await Habit.findByIdAndDelete(req.params.id);

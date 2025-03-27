@@ -19,7 +19,8 @@ const initialState: HabitsState = {
 
 //get habits list
 export const fetchHabitsThunk = createAsyncThunk("habits/fetchHabits", async () => {
-  const response = await fetch("http://localhost:5002/habitos");
+  const userId = localStorage.getItem("userId");
+  const response = await fetch(`http://localhost:5002/habitos/${userId}`);
   return await response.json();
 });
 
