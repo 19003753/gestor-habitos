@@ -85,7 +85,17 @@ Abre en el navegador: [http://localhost:3000](http://localhost:3000)
 
 ## 📌 Captura de pantalla
 
-![Interfaz principal](./public/screenshot.png)
+Inicio de Sesion
+<img width="485" alt="Screenshot 2025-03-26 at 7 12 32 PM" src="https://github.com/user-attachments/assets/7544107a-1250-4332-a273-4fa28004eeac" />
+
+Registro
+<img width="484" alt="Screenshot 2025-03-26 at 7 12 53 PM" src="https://github.com/user-attachments/assets/cd3c7da7-c997-4b3a-9f76-66414bd9f75d" />
+
+Crear un Hábito
+<img width="503" alt="Screenshot 2025-03-26 at 7 16 25 PM" src="https://github.com/user-attachments/assets/e91827c6-7dd1-4699-bc11-754ab28b0b46" />
+
+Lista de Habitos con actualización de rachas
+<img width="482" alt="Screenshot 2025-03-26 at 7 17 29 PM" src="https://github.com/user-attachments/assets/5a3860e6-7da4-4e9e-8d73-240cdd769485" />
 
 ---
 
@@ -93,16 +103,18 @@ Abre en el navegador: [http://localhost:3000](http://localhost:3000)
 
 ### 📍 Usuarios
 
-| Método | Ruta         | Descripción                     |
-|--------|--------------|----------------------------------|
-| POST   | /register    | Registro de usuario              |
-| POST   | /login       | Login de usuario + JWT           |
-| GET    | /users       | Obtener todos los usuarios       |
+| Método | Ruta                       | Descripción                      |
+|--------|----------------------------|----------------------------------|
+| POST   | /usuarios/register         | Registro de usuario              |
+| POST   | /usuarios/login            | Login de usuario + JWT           |
+| GET    | /usuarios/todos            | Obtener todos los usuarios       |
+| DELETE | /usuarios/eliminar-todos   | Eliminar todos los usuarios      |
 
 ### 📍 Hábitos
 
 | Método | Ruta                            | Descripción                                   |
-|--------|----------------------------------|-----------------------------------------------|
+|--------|---------------------------------|-----------------------------------------------|
+| GET    | /habitos/todos                  | Obtener todos los habitos                     |
 | GET    | /habitos/:userId                | Obtener hábitos por usuario                   |
 | POST   | /habitos/                       | Crear nuevo hábito                            |
 | PUT    | /habitos/marcar/:id             | Marcar hábito como completado                 |
