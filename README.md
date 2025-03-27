@@ -1,96 +1,152 @@
 # 📌 Gestor de Hábitos
 
 ## 📌 Descripción
-**Gestor de Hábitos** es una aplicación web que permite a los usuarios registrar y hacer seguimiento de sus hábitos diarios. Los usuarios pueden **marcar hábitos como completados**, visualizar su progreso mediante **barras de progreso**, y gestionar sus rachas de cumplimiento.
 
-## 📌 Características principales
-✅ **Añadir hábitos** con nombre y descripción.  
-✅ **Marcar hábitos como completados** con un botón `Hecho`.  
-✅ **Registro de rachas** que se actualiza diariamente.  
-✅ **Reinicio automático de rachas** si se omite un día sin actualizar.  
-✅ **Mensajes dinámicos de estado** que indican si el hábito fue actualizado o ya se marcó ese día.  
-✅ **Barras de progreso dinámicas** que reflejan el porcentaje de avance hacia la meta de 66 días.  
-✅ **API con MongoDB** para almacenar la información de los hábitos.  
-
-## 📌 Captura de pantalla
-A continuación, se muestra una vista previa del frontend:
-
-<img width="496" alt="Screenshot 2025-03-19 at 3 32 52 PM" src="https://github.com/user-attachments/assets/33b4de9f-af7c-4120-b6bb-524c5008c778" />
-
-
-## 📌 Tecnologías utilizadas
-- **Frontend:** React (Next.js), Redux Toolkit, Tailwind CSS
-- **Backend:** Node.js, Express.js, MongoDB
-- **Estado global:** Redux Toolkit con `createSlice` y `createAsyncThunk`
-- **Cliente API:** Fetch API para comunicarse con el backend
-
-## 📌 Instalación y ejecución
-1. **Clona el repositorio:**
-   ```bash
-   git clone https://github.com/tu-usuario/gestor-habitos.git
-   cd gestor-habitos
-   ```
-
-2. **Instala las dependencias del backend:**
-   ```bash
-   cd backend
-   npm install
-   ```
-
-3. **Instala las dependencias del frontend:**
-   ```bash
-   cd ../frontend
-   npm install
-   ```
-
-4. **Configura las variables de entorno:**
-   - En el backend, crea un archivo `.env` y define `MONGO_URI` con la conexión a MongoDB.
-
-5. **Ejecuta el backend:**
-   ```bash
-   cd backend
-   npm run dev
-   ```
-
-6. **Ejecuta el frontend:**
-   ```bash
-   cd ../frontend
-   npm run dev
-   ```
-
-7. **Accede a la aplicación en tu navegador:**
-   ```
-   http://localhost:3000
-   ```
-
-## 📌 API Endpoints
-### 📌 **Backend (Express.js)**
-| Método | Endpoint | Descripción |
-|--------|---------|-------------|
-| `POST` | `/habitos` | Crea un nuevo hábito |
-| `GET`  | `/habitos` | Obtiene la lista de hábitos |
-| `PUT`  | `/habitos/marcar/:id` | Marca un hábito como completado (actualiza la racha) |
-| `DELETE` | `/habitos/eliminar/:id` | Elimina un hábito |
-
-## 📌 Cómo actualizar un hábito en Postman
-1. Abre **Postman** y selecciona el método `PUT`.
-2. Introduce la URL:
-   ```
-   http://localhost:5002/habitos/marcar/ID_DEL_HABITO
-   ```
-3. Reemplaza `ID_DEL_HABITO` con el `_id` real del hábito.
-4. Haz clic en **Send**.
-
-## 📌 Estado de racha
-- Si el usuario **marca el hábito en el mismo día**, verá un mensaje **amarillo** (`⚠️ No se puede actualizar el hábito el mismo día.`).
-- Si el hábito **se marca correctamente**, se muestra un mensaje **verde** (`✅ Hábito actualizado. Nos vemos mañana!`).
-- Si el usuario **olvida actualizar por más de un día**, la racha se **reinicia automáticamente a 0**.
-
-## 📌 Contribuciones
-Si quieres contribuir a este proyecto, por favor **haz un fork y abre un pull request** con tus mejoras. 🚀🔥
-
-## 📌 Autor
-Desarrollado por **Juan Vargas 19003753**.
+**Gestor de Hábitos** es una aplicación web desarrollada en **Next.js**, **Express.js** y **MongoDB**, que permite a los usuarios crear, visualizar, marcar y eliminar hábitos. Está basada en el concepto de racha diaria, apoyándose en la teoría de los 66 días para formar hábitos según el libro *Hábitos Atómicos* de James Clear.
 
 ---
-¡Gracias por usar *Gestor de Hábitos*! 🎯🔥
+
+## ✅ Funcionalidades principales
+
+- Registro y login de usuarios con contraseñas encriptadas (bcrypt + JWT).
+- Visualización de hábitos personales por usuario autenticado.
+- Marcar hábito como completado (con botón `Hecho`) y actualización automática de la racha.
+- Reinicio automático de racha si el usuario no marca el hábito por un día.
+- Barra de progreso visual según los días de racha (máximo 66).
+- Mensajes visuales de confirmación o advertencia según si el hábito fue marcado ese día.
+- Creación de nuevos hábitos desde el frontend.
+- Eliminación de hábitos con confirmación personalizada.
+- Redirección automática al login si no hay sesión activa.
+- Vista limpia y responsiva con TailwindCSS.
+- Manejo global del estado del usuario y hábitos con Redux Toolkit.
+
+---
+
+## 🧪 Tecnologías utilizadas
+
+- **Frontend**: Next.js, React, TailwindCSS
+- **Backend**: Express.js, Node.js, MongoDB (Mongoose)
+- **Estado global**: Redux Toolkit (`createSlice`, `createAsyncThunk`)
+- **Autenticación**: JWT (Token), bcrypt
+
+---
+
+## 📦 Instalación y ejecución
+
+### Clona el repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/gestor-habitos.git
+cd gestor-habitos
+```
+
+### Backend:
+
+```bash
+cd backend
+npm install
+```
+
+🔐 Crea un archivo `.env` y agrega:
+
+```env
+MONGO_URI=mongodb://localhost:27017/gestor-habitos
+JWT_SECRET=tu_clave_secreta
+```
+
+```bash
+npm run dev
+```
+
+### Frontend:
+
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
+
+Abre en el navegador: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📌 Flujo general de uso
+
+1. El usuario se registra o inicia sesión.
+2. Una vez autenticado, puede crear hábitos con nombre y descripción.
+3. Cada hábito tiene:
+   - Una barra de progreso.
+   - Botón `Hecho` (sólo se puede usar una vez al día).
+   - Botón `Eliminar` con confirmación.
+4. Si se omite un día, la racha se reinicia a 0 automáticamente.
+5. Todo se mantiene por usuario gracias al uso de `userId` y JWT.
+
+---
+
+## 📌 Captura de pantalla
+
+![Interfaz principal](./public/screenshot.png)
+
+---
+
+## 🔐 API Endpoints
+
+### 📍 Usuarios
+
+| Método | Ruta         | Descripción                     |
+|--------|--------------|----------------------------------|
+| POST   | /register    | Registro de usuario              |
+| POST   | /login       | Login de usuario + JWT           |
+| GET    | /users       | Obtener todos los usuarios       |
+
+### 📍 Hábitos
+
+| Método | Ruta                            | Descripción                                   |
+|--------|----------------------------------|-----------------------------------------------|
+| GET    | /habitos/:userId                | Obtener hábitos por usuario                   |
+| POST   | /habitos/                       | Crear nuevo hábito                            |
+| PUT    | /habitos/marcar/:id             | Marcar hábito como completado                 |
+| DELETE | /habitos/eliminar/:id           | Eliminar hábito                               |
+| DELETE | /habitos/eliminar-todos         | Eliminar todos los hábitos                    |
+
+---
+
+## 🧠 Actividades por semana
+
+### 📌 Semana 1:
+- Estructura inicial del proyecto backend y frontend.
+- Conexión a MongoDB.
+- Primeros endpoints con Express.
+
+### 📌 Semana 2:
+- Modelo de hábitos.
+- CRUD básico de hábitos desde Postman.
+
+### 📌 Semana 3:
+- Barra de progreso.
+- Botón `Done`.
+- Reinicio de racha desde backend.
+- Manejo visual con mensajes condicionales.
+
+### 📌 Semana 4:
+- Integración con frontend.
+- Redux Toolkit para gestión de hábitos.
+- Botón dinámico (habilitado/deshabilitado).
+- Validaciones y feedback visual.
+
+### 📌 Semana 5:
+- Registro y login desde frontend.
+- Middleware de autenticación con JWT.
+- Relación de hábitos por usuario.
+- Protección de rutas si el token no existe.
+- Estado global del usuario con Redux.
+
+---
+
+## 🙋‍♂️ Autor
+
+Desarrollado por **Juan Vargas - 19003753**
+
+---
+
+## 🎯 ¡Gracias por probar el Gestor de Hábitos!
