@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../store/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store/store";
 import { fetchHabitsThunk } from "../store/habitsSlice";
 import Habits from "@/app/habits";
 import CreateHabitForm from "./createHabit/page";
@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
-  const habits = useSelector((state: RootState) => state.habits.habits);
   const [nombre, setNombre] = useState("");
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const router = useRouter();
