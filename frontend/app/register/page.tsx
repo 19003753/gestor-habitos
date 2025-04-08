@@ -54,6 +54,7 @@ export default function RegisterPage() {
 
     } catch (err) {
     setError("Error del servidor");
+    console.error("Error:", err);
     }
 };
 

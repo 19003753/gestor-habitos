@@ -63,7 +63,8 @@ export default function Habits() {
 
       dispatch(fetchHabitsThunk());
     } catch (error) {
-      console.error("Error al actualizar el hábito:", error);
+      console.error("Error al actualizar el hábito");
+      console.error(error);
     }
   };
 
@@ -88,7 +89,8 @@ export default function Habits() {
   
       dispatch(fetchHabitsThunk());
     } catch (err) {
-      console.error("Error al eliminar:", err);
+      console.error("Error al eliminar");
+      console.error(err);
     }
   };
 

@@ -32,8 +32,8 @@ router.post("/register", async (req, res) => {
         email: user.email,
         },
     });
-    } catch (err) {
-    res.status(500).json({ message: "Error en el servidor" });
+    } catch (error) {
+    res.status(500).json({ message: "Error en el servidor:" + error });
     }
 });
 
@@ -42,7 +42,7 @@ router.get("/todos", async (req, res) => {
     try {
         const usuarios = await User.find({});
         res.json(usuarios);
-    } catch (error) {
+    }  catch (error) {
         res.status(500).json({ message: "Error al obtener usuarios", error });
     }
 });
@@ -54,7 +54,7 @@ router.delete("/eliminar-todos", async (req, res) => {
         res.json({ message: "Todos los usuarios han sido eliminados correctamente." });
     } catch (error) {
         console.error("Error al eliminar usuarios:", error);
-        res.status(500).json({ message: "Error al eliminar usuarios." });
+        res.status(500).json({ message: "Error al eliminar usuarios. " + error });
     }
 });
 
@@ -81,7 +81,8 @@ router.post("/login", async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({ message: "Error en el servidor" });
+        res.status(500).json({ message: "Error en el servidor "});
+        console.error("Error en el servidor:", err);
     }
 });
 

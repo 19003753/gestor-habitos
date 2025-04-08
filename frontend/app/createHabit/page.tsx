@@ -39,6 +39,7 @@ export default function CreateHabitForm({ onSuccess }: { onSuccess?: () => void 
       if (onSuccess) onSuccess();
     } catch (err) {
       setError("Error en el servidor");
+      console.error("Error:", err);
     }
   };
 

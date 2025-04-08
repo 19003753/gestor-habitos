@@ -43,6 +43,7 @@ export default function LoginPage() {
       router.push("/");
     } catch (err) {
       setError("Error del servidor");
+      console.error("Error:", err);
     }
   };
 

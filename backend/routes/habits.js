@@ -98,8 +98,9 @@ router.post("/", async (req, res) => {
     const nuevoHabito = new Habit(req.body);
     await nuevoHabito.save();
     res.json(nuevoHabito);
-  } catch (err) {
+  } catch (err){
     res.status(500).json({ message: "Error al crear el hábito" });
+    console.error("Error al crear el hábito:", err);
   }
 });
 

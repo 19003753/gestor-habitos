@@ -13,6 +13,7 @@ const authMiddleware = (req, res, next) => {
         next();
     } catch (error) {
         res.status(401).json({ message: "Token inválido" });
+        console.error("Error de autenticación:", error);
     }
 };
 
