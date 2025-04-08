@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { fetchHabitsThunk } from "../store/habitsSlice";
 import Habits from "@/app/habits";
-import CreateHabitForm from "./createHabit/page";
+import CreateHabitForm from "@/app/createHabit/CreateHabitForm";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
